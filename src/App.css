@@ -1,0 +1,33 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.input-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 1.25em;
+}
+
+.button-container{
+display: flex;
+justify-content: space-around;
+}
+
+.button {
+  margin: 0.5em;
+  font-size: 1.25em;
+}
+
+.error {
+  color: #cc0000;
+  font-weight: 650;
+  font-size: 1.25em;
+}
