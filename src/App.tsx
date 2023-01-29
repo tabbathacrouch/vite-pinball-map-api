@@ -31,8 +31,8 @@ function App() {
 
   async function requestPinballLocations(lat: string, lon: string) {
     const data = await getLocationByLatLon({
-      lat: latInput,
-      lon: lonInput,
+      lat: lat,
+      lon: lon,
       send_all_within_distance: "50 miles",
     });
     if (data.errors) {
@@ -63,7 +63,7 @@ function App() {
       const crd = position.coords;
       setLatInput(crd.latitude);
       setLonInput(crd.longitude);
-      await requestPinballLocations(latInput, lonInput);
+      await requestPinballLocations(crd.latitude, crd.longitude);
       setIsLoading(false);
       return;
     }
