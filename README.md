@@ -18,9 +18,9 @@
 
 ### How did I solve this?
 
-- used Postman to test and understand pinballmap API
-- used Vite to create a react application
-- created async functions with `axios` and added them to [UserService.tsx](./src/services/UserService.tsx)
+- used [Postman](https://www.postman.com/product/what-is-postman/) to test and understand pinballmap API
+- used [Vite](https://vitejs.dev/guide/why.html) to create a react application
+- created async functions with [axios](https://axios-http.com/docs/intro) and added them to [UserService.tsx](./src/services/UserService.tsx)
 - implemented "Search" button
 - implemented "Near Me" button
 - added a few CSS styles for readability
@@ -28,9 +28,8 @@
 ### Future Enhancements
 
 - update `loading` state to use a fancy animated spinner
-- use [`react-map`](https://developers.google.com/maps/documentation/javascript/react-map) to display closest pinball location on a map with markers
+- use [`react-map`](https://developers.google.com/maps/documentation/javascript/react-map) to display closest pinball locations on a map with markers
 
-#### Attributions
+### Attributions
 
 - This application leverages the pinballmap API ([docs](https://pinballmap.com/api/v1/docs/1.0.html)) to find the nearest pinball locations given latitude and longitude.
-# vite-pinball-map-api
