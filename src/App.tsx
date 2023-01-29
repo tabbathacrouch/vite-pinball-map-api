@@ -29,12 +29,7 @@ function App() {
     }
   };
 
-  async function searchButtonClick() {
-    if (latInput.length === 0 || lonInput.length === 0) {
-      setError("Please enter a valid latitude/longitude or click 'Near Me'.");
-      return;
-    }
-    setIsLoading(true);
+  async function requestPinballLocations(lat: string, lon: string) {
     const data = await getLocationByLatLon({
       lat: latInput,
       lon: lonInput,
@@ -47,6 +42,16 @@ function App() {
       setError("");
       setLocationDataRaw(data.locations);
     }
+    return;
+  }
+
+  async function searchButtonClick() {
+    if (latInput.length === 0 || lonInput.length === 0) {
+      setError("Please enter a valid latitude/longitude or click 'Near Me'.");
+      return;
+    }
+    setIsLoading(true);
+    await requestPinballLocations(latInput, lonInput);
     setIsLoading(false);
     return;
   }
@@ -58,24 +63,14 @@ function App() {
       const crd = position.coords;
       setLatInput(crd.latitude);
       setLonInput(crd.longitude);
-      const data = await getLocationByLatLon({
-        lat: crd.latitude,
-        lon: crd.longitude,
-        send_all_within_distance: "50 miles",
-      });
-      if (data.errors) {
-        setError(data.errors);
-        setLocationDataRaw(null);
-      } else {
-        setError("");
-        setLocationDataRaw(data.locations);
-      }
+      await requestPinballLocations(latInput, lonInput);
       setIsLoading(false);
       return;
     }
-    function error(err: any) {
-      console.log({ err });
-      setError(err);
+    function error() {
+      setError(
+        "To enable this feature, please enable location access in your browser."
+      );
       setIsLoading(false);
     }
     navigator.geolocation.getCurrentPosition(success, error);
